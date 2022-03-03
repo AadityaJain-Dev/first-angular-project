@@ -1,9 +1,26 @@
-<div>
+<div class="container mt-5">
+    <div class="row">
 
-    <form>
-        <input type="text" name="username" id="username">
-        <input type="password" name="password" id="password">
-        <button (click)="userLogin()">Login</button>
-    </form>
+        <div class="text-center">
+            <h2 class="h1">Login</h2>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="userEmail">
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]='userPassword'>
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="userLogin()">Login</button>
+
+    </div>
+
+
+
 
 </div>
