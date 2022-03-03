@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { sharedData } from '../data';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   userRegister() {
     axios
-      .post('https://76d9cf4ebba848.lhrtunnel.link/api/User/register', {
+      .post(sharedData.API_REGISTER_URL, {
         userName: this.userName,
         password: this.userPassword,
         email: this.userEmail,
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
         isAdmin: false,
       })
       .then(function (response) {
-        console.log(response);
+        console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
