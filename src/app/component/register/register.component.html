@@ -5,6 +5,17 @@
             <h2 class="h1">Register</h2>
         </div>
 
+        <div class="my-4">
+            <div class="alert alert-success" role="alert" *ngIf="registerSuccessResponse">
+                {{registerSuccessResponse}}
+            </div>
+
+
+            <div class="alert alert-danger" role="alert" *ngIf="registerRejectResponse">
+                {{registerRejectResponse}}
+            </div>
+        </div>
+
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>

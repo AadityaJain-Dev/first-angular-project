@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
   userEmail: string = '';
   userPassword: string = '';
   userName: string = '';
+  registerSuccessResponse: string = '';
+  registerRejectResponse: string = '';
 
   constructor() {}
 
@@ -26,11 +28,18 @@ export class RegisterComponent implements OnInit {
         phoneNumber: this.mobileNumber,
         isAdmin: false,
       })
-      .then(function (response) {
-        console.log(response.data);
+      .then(() => {
+        this.registerSuccessResponse = 'Registration Success';
+        setTimeout(() => {
+          this.registerSuccessResponse = '';
+        }, 1500);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
+        this.registerRejectResponse = 'Registration Failure';
+        setTimeout(() => {
+          this.registerRejectResponse = '';
+        }, 1500);
       });
   }
 }
