@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import axios from 'axios';
+import { sharedData } from '../data';
 
 @Component({
   selector: 'app-checkout',
@@ -7,11 +9,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
+  userFirstName: string = '';
+  userLastName: string = '';
+  userAddress: string = '';
+  userAddress2: string = '';
+  userIdFromLocalStorage: any = '';
+  cartData: any = [];
+
   constructor(private _router: Router) {
     if (localStorage.getItem('wheel-kart-user') === null) {
       this._router.navigate(['login']);
     }
+    this.userIdFromLocalStorage = localStorage.getItem('wheel-kart-user');
+    this.userIdFromLocalStorage = JSON.parse(
+      this.userIdFromLocalStorage
+    ).userId;
+    this.getCartData();
   }
 
   ngOnInit(): void {}
+
+  getCartData = () => {
+    axios
+      .get(sharedData.API_REGISTER_URL + this.userIdFromLocalStorage)
+      .then((response) => {
+        console.log(response.data);
+        this.cartData = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 }
