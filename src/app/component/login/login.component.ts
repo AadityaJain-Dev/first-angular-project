@@ -10,6 +10,8 @@ import { sharedData } from '../data';
 export class LoginComponent implements OnInit {
   userEmail: string = '';
   userPassword: string = '';
+  loginSuccessResponse: string = '';
+  loginRejectResponse: string = '';
 
   constructor() {}
 
@@ -21,11 +23,19 @@ export class LoginComponent implements OnInit {
         password: this.userPassword,
         email: this.userEmail,
       })
-      .then(function (response) {
-        console.log(response.data);
+      .then((response) => {
+        localStorage.setItem('wheel-kart-user', JSON.stringify(response.data));
+        this.loginSuccessResponse = 'Login Success';
+        setTimeout(() => {
+          this.loginSuccessResponse = '';
+        }, 1500);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
+        this.loginRejectResponse = 'Login Failure';
+        setTimeout(() => {
+          this.loginRejectResponse = '';
+        }, 1500);
       });
   }
 }

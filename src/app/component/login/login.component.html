@@ -6,6 +6,18 @@
         </div>
 
 
+
+        <div class="my-4">
+            <div class="alert alert-success" role="alert" *ngIf="loginSuccessResponse">
+                {{loginSuccessResponse}}
+            </div>
+
+
+            <div class="alert alert-danger" role="alert" *ngIf="loginRejectResponse">
+                {{loginRejectResponse}}
+            </div>
+        </div>
+
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="userEmail">
