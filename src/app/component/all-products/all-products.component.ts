@@ -15,6 +15,7 @@ export class AllProductsComponent implements OnInit {
     if (localStorage.getItem('wheel-kart-user') === null) {
       this._router.navigate(['login']);
     }
+    this.getAllProduct();
   }
 
   ngOnInit(): void {}
