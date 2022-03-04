@@ -31,10 +31,10 @@ export class CheckoutComponent implements OnInit {
 
   getCartData = () => {
     axios
-      .get(sharedData.API_REGISTER_URL + this.userIdFromLocalStorage)
+      .get(sharedData.API_CHECKOUT_URL + this.userIdFromLocalStorage)
       .then((response) => {
-        console.log(response.data);
-        this.cartData = response.data;
+        console.log(response.data.userCarList);
+        this.cartData = response.data.userCarList;
       })
       .catch((error) => {
         console.log(error);
