@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { sharedData } from '../data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginSuccessResponse: string = '';
   loginRejectResponse: string = '';
 
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
 
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
         this.loginSuccessResponse = 'Login Success';
         setTimeout(() => {
           this.loginSuccessResponse = '';
+          this._router.navigate(['all-products']);
         }, 1500);
       })
       .catch((error) => {
