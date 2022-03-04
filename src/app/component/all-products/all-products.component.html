@@ -1,1 +1,25 @@
-<p>all-products works!</p>
+<div class="container mt-5">
+
+    <h3>All Cars:</h3>
+
+    <div class="card" style="width: 18rem;" *ngFor="let product of allProductsList">
+        <div class="card-body">
+            <h5 class="card-title">Product: {{product.carName}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Car Cost: {{product.carCost}}</li>
+            <li class="list-group-item">Car Mileage: {{product.carMileage}}</li>
+            <li class="list-group-item">Engine Displacement: {{product.engineDisplacement}}</li>
+            <li class="list-group-item">Fuel Type: {{product.fuelType}}</li>
+            <li class="list-group-item">Seating Capacity: {{product.seatingCapacity}}</li>
+            <li class="list-group-item">Body Type: {{product.bodyType}}</li>
+            <li class="list-group-item">Transmission: {{product.transmission}}</li>
+
+        </ul>
+        <div class="card-body">
+            <button class="btn btn-primary" (click)="addToCart">Add to Cart</button>
+        </div>
+    </div>
+
+
+</div>
