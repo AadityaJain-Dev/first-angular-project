@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { sharedData } from '../data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   registerSuccessResponse: string = '';
   registerRejectResponse: string = '';
 
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
 
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
         this.registerSuccessResponse = 'Registration Success';
         setTimeout(() => {
           this.registerSuccessResponse = '';
+          this._router.navigate(['login']);
         }, 1500);
       })
       .catch((error) => {
